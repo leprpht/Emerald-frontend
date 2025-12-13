@@ -6,3 +6,17 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 50vw;
 }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-button {
+  cursor: pointer;
+}
+
+.delete-button img {
+  width: 24px;
+  height: 24px;
+}
