@@ -1,33 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+import { fetchCampaigns } from './services/api'
+import type { Campaign } from './types/campaign'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadCampaigns = async () => {
+      setLoading(true);
+      const data = await fetchCampaigns();
+      setCampaigns(data);
+      setLoading(false);
+    };
+    loadCampaigns();
+  });
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1>Campaigns</h1>
+        {campaigns.length === 0 ? (
+          <p>No campaigns found</p>
+        ) : (
+          <ul>
+            {campaigns.map((campaign) => (
+              <li key={campaign.id}>
+                {campaign.campaignName}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
