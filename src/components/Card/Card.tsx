@@ -2,6 +2,7 @@ import type { Campaign } from '../../types/campaign';
 import './Card.css';
 import Keyword from '../Keyword/Keyword';
 import x from '/src/assets/x-icon.svg';
+import edit from '/src/assets/pencil-icon.svg';
 import { deleteCampaign } from '../../services/api';
 
 interface CardProps {
@@ -17,19 +18,21 @@ export default function Card(data: CardProps) {
 
   return (
     <div className="card">
-      <div className="card-header">
-        <h3>{data.campaign.campaignName}</h3>
-        <a className='delete-button' onClick={deleteThisCampaign}>
-          <img src={x}></img>
-        </a>
-      </div>
-      {data.campaign.keywords.map((keyword) => (
-          <Keyword text={keyword} />
+      <h3>{data.campaign.campaignName}</h3>
+      {data.campaign.keywords.map((keyword, index) => (
+          <Keyword key={index} text={keyword} />
       ))}
       <p>Bid Amount: ${data.campaign.bidAmount}</p>
       <p>Campaign Fund: ${data.campaign.campaignFund}</p>
       <p>Status: {data.campaign.status ? 'Active' : 'Paused'}</p>
-      <p>Location: {data.campaign.town} (Radius: {data.campaign.radius} miles)</p>
+      <p>Location: {data.campaign.town}</p>
+      <p>Radius: {data.campaign.radius} kilometers</p>
+      <button className='delete-button' onClick={deleteThisCampaign}>
+          <img src={x} alt="Delete" />
+      </button>
+      <button className='edit-button'>
+          <img src={edit} alt="Edit" />
+      </button>
     </div>
   );
 }
