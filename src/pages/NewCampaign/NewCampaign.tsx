@@ -14,10 +14,44 @@ export default function NewCampaign() {
   const [budget, setBudget] = useState<number>(0);
   const [status, setStatus] = useState<string>('active');
   const [town, setTown] = useState<string>(towns[0]?.name || '');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const nav = useNavigate();
 
   async function handleCreateCampaign() {
+
+    const missingFields: string[] = [];
+    
+    if (!campaignName.trim()) {
+      missingFields.push('Campaign Name');
+    }
+
+    if (keywords.length === 0) {
+      missingFields.push('Keywords');
+    }
+
+    if (bidAmount <= 0) {
+      missingFields.push('Bid Amount');
+    }
+
+    if (budget <= 0) {
+      missingFields.push('Campaign Budget');
+    }
+
+    if (!town) {
+      missingFields.push('Campaign Target Town');
+    }
+
+    if (missingFields.length > 0) {
+      setErrorMessage(`Please fill in the following required fields: ${missingFields.join(', ')}`);
+      return;
+    }
+
+    if (budget < bidAmount) {
+      setErrorMessage('Campaign Budget must be greater than or equal to Bid Amount.');
+      return;
+    }
+
     try {
       const newCampaign: Omit<Campaign, 'id'> = {
         campaignName,
@@ -31,9 +65,8 @@ export default function NewCampaign() {
 
       await createCampaign(newCampaign as Campaign);
       nav('/');
-    } catch (error) {
-      alert('Error creating campaign. Please try again.');
-      console.log(error);
+    } catch {
+      setErrorMessage('Error creating campaign. Please try again.');
     }
   }
 
@@ -41,6 +74,11 @@ export default function NewCampaign() {
     <div className="new-campaign-container">
       <div className='new-campaign-card'>
         <h1>New Campaign</h1>
+        {errorMessage && (
+          <div className='error'>
+            {errorMessage}
+          </div>
+        )}
         <div className='new-campaign-name'>
           <h3>Campaign Name</h3>
           <input type="text" placeholder='Enter campaign name...' value={campaignName} onChange={(e) => setCampaignName(e.target.value)}/>
@@ -52,7 +90,7 @@ export default function NewCampaign() {
         </div>
         <div className='new-campaign-budget'>
           <h3>Campaign Budget</h3>
-          <input type="number" placeholder='Enter campaign budget...' step="1"value={budget || ''}onChange={(e) => setBudget(parseFloat(e.target.value) || 0)}/>
+          <input type="number" placeholder='Enter campaign budget...' step="1"value={budget || ''} onChange={(e) => setBudget(parseFloat(e.target.value) || 0)}/>
         </div>
         <div className='new-campaign-status'>
           <h3>Campaign Status</h3>

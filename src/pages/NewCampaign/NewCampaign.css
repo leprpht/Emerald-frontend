@@ -63,3 +63,12 @@ input[type="range"] {
 .create-campaign-button:hover {
   background-color: #0b4f4a;
 }
+
+.error {
+  padding: 12px;
+  background-color: #fee;
+  border: 1px solid #fcc;
+  border-radius: 4px;
+  color: #900;
+  margin-bottom: 16px;
+}
