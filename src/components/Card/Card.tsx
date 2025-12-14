@@ -4,12 +4,15 @@ import Keyword from '../Keyword/Keyword';
 import x from '/src/assets/x-icon.svg';
 import edit from '/src/assets/pencil-icon.svg';
 import { deleteCampaign } from '../../services/api';
+import { useNavigate } from 'react-router';
 
 interface CardProps {
   campaign: Campaign;
 }
 
 export default function Card(data: CardProps) {
+
+  const nav = useNavigate();
 
   function deleteThisCampaign() {
     deleteCampaign(data.campaign.id);
@@ -28,10 +31,10 @@ export default function Card(data: CardProps) {
       <p>Location: {data.campaign.town}</p>
       <p>Radius: {data.campaign.radius} kilometers</p>
       <button className='delete-button' onClick={deleteThisCampaign}>
-          <img src={x} alt="Delete" />
+        <img src={x} alt="Delete" />
       </button>
-      <button className='edit-button'>
-          <img src={edit} alt="Edit" />
+      <button className='edit-button' onClick={() => nav(`/edit-campaign/${data.campaign.id}`)}>
+        <img src={edit} alt="Edit" />
       </button>
     </div>
   );

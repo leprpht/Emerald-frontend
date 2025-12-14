@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router';
 
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 const NewCampaign = lazy(() => import('./pages/NewCampaign/NewCampaign'));
+const EditCampaign = lazy(() => import('./pages/EditCampaign/EditCampaign'));
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/new-campaign" element={<NewCampaign />} />
+          <Route path="/edit-campaign/:id" element={<EditCampaign />} />
         </Routes>
       </Suspense>
     </>
