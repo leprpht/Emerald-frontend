@@ -20,7 +20,7 @@ export default function Card(data: CardProps) {
     <div className="card">
       <h3>{data.campaign.campaignName}</h3>
       {data.campaign.keywords.map((keyword, index) => (
-          <Keyword key={index} text={keyword} />
+          <Keyword key={index} text={keyword} onRemove={() => {}} />
       ))}
       <p>Bid Amount: ${data.campaign.bidAmount}</p>
       <p>Campaign Fund: ${data.campaign.campaignFund}</p>

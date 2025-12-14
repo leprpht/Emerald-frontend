@@ -1,0 +1,9 @@
+.keyword-container {
+  width: 100%;
+}
+
+.selected-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}

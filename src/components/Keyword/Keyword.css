@@ -2,9 +2,9 @@
   background-color: #0b4f4a;
   color: white;
   border-radius: 15px;
-  padding: 10px;
+  padding: 5px 10px;
   display: inline-block;
-  margin-right: 8px;
+  margin-right: 5px;
 }
 
 .keyword:hover {
