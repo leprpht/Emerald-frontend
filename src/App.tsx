@@ -1,6 +1,5 @@
 import './App.css'
 import NavBar from './components/NavBar/NavBar';
-import AddButton from './components/AddButton/AddButton';
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router';
 
@@ -17,7 +16,6 @@ function App() {
           <Route path="/new-campaign" element={<NewCampaign />} />
         </Routes>
       </Suspense>
-      <AddButton />
     </>
   )
 }
