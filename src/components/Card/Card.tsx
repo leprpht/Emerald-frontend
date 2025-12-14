@@ -5,6 +5,7 @@ import x from '/src/assets/x-icon.svg';
 import edit from '/src/assets/pencil-icon.svg';
 import { deleteCampaign } from '../../services/api';
 import { useNavigate } from 'react-router';
+import { styleNumbers } from '../../util/util';
 
 interface CardProps {
   campaign: Campaign;
@@ -25,8 +26,8 @@ export default function Card(data: CardProps) {
       {data.campaign.keywords.map((keyword, index) => (
           <Keyword key={index} text={keyword} onRemove={() => {}} />
       ))}
-      <p>Bid Amount: ${data.campaign.bidAmount}</p>
-      <p>Campaign Fund: ${data.campaign.campaignFund}</p>
+      <p>Bid Amount: $ {styleNumbers(data.campaign.bidAmount)}</p>
+      <p>Campaign Fund: $ {styleNumbers(data.campaign.campaignFund)}</p>
       <p>Status: {data.campaign.status ? 'Active' : 'Paused'}</p>
       <p>Location: {data.campaign.town}</p>
       <p>Radius: {data.campaign.radius} kilometers</p>

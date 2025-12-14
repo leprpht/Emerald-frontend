@@ -18,12 +18,16 @@ export default function Cards() {
     }, []);
   
     if (loading) {
-      return <div>Loading...</div>;
+      return (
+        <div className="placeholder">
+          <h2>Loading campaigns...</h2>
+        </div>
+      );
     }
 
     if (campaigns.length === 0) {
       return (
-        <div className="no-campaigns">
+        <div className="placeholder">
           <h2>No campaigns created</h2>
         </div>
       );

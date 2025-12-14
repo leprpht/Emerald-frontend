@@ -153,7 +153,7 @@ export default function EditCampaign() {
           <h3>Campaign Target Town</h3>
           <select value={town} onChange={(e) => setTown(e.target.value)} defaultValue={campaign.town}>
             {towns.map((town) => (
-              <option key={town.name} value={town.name}>{town.displayName}</option>
+              <option key={town.name} value={town.displayName}>{town.displayName}</option>
             ))}
           </select>
         </div>
