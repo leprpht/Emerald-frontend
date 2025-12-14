@@ -21,6 +21,14 @@ export default function Cards() {
       return <div>Loading...</div>;
     }
 
+    if (campaigns.length === 0) {
+      return (
+        <div className="no-campaigns">
+          <h2>No campaigns created</h2>
+        </div>
+      );
+    }
+
   return (
     <div className="cards-container">
       {campaigns.map((campaign) => (
