@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Typeahead.css'
-import tags from '../../taglist'
+import tags from '../../data/taglist'
 
 export default function Typeahead({ onSelect }: { onSelect: (tag: string) => void }) {
   const [query, setQuery] = useState('');
