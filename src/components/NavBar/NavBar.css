@@ -4,6 +4,7 @@
   color: white;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .navbar button {
@@ -12,4 +13,9 @@
   color: white;
   cursor: pointer;
   padding: 0;
+}
+
+.balance {
+  right: 2rem;
+  position: absolute;
 }

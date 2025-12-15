@@ -109,7 +109,7 @@ export default function NewCampaign() {
         </div>
         <div className='new-campaign-radius'>
           <h3>Campaign Target Radius: {radius} km</h3>
-          <input type="range" min="1" max="100" value={radius} onChange={(e) => setRadius(parseInt(e.target.value))} />
+          <input type="range" min="1" max="200" value={radius} onChange={(e) => setRadius(parseInt(e.target.value))} />
         </div>
         <button className='create-campaign-button'onClick={handleCreateCampaign}>Create Campaign</button>
       </div>
