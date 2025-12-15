@@ -15,3 +15,27 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fafafa;
 }
+
+.demo-account-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.demo-account-button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  background-color: #0d6e6a;
+  color: white;
+  font-size: 18px;
+}
+
+.demo-account-button:hover {
+  background-color: #0b4f4a;
+  cursor: pointer;
+}

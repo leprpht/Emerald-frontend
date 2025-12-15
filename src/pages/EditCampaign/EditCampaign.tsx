@@ -161,7 +161,7 @@ export default function EditCampaign() {
           <h3>Campaign Target Radius: {radius} km</h3>
           <input type="range" min="1" max="200" value={radius} onChange={(e) => setRadius(parseInt(e.target.value))} defaultValue={campaign.radius} />
         </div>
-        <button className='edit-campaign-button'onClick={handleEditCampaign}>Save Changes</button>
+        <button className='edit-campaign-button' onClick={handleEditCampaign}>Save Changes</button>
       </div>
     </div>
   );

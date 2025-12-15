@@ -26,3 +26,12 @@ export async function updateCampaign(id: number, campaign: Campaign): Promise<Ca
 export async function deleteCampaign(id: number): Promise<void> {
     await axios.delete(`${url}/campaigns/${id}`);
 }
+
+export async function fetchDemoAccountBalance(): Promise<number> {
+    const response = await axios.get<number>(`${url}/balance`);
+    return response.data;
+}
+
+export async function updateDemoAccountBalance(amount: number): Promise<void> {
+    await axios.put(`${url}/balance?value=${amount}`);
+}
