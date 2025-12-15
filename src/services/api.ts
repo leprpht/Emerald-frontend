@@ -1,7 +1,7 @@
 import type { Campaign } from '../types/campaign';
 import axios from 'axios';
 
-const url = 'http://localhost:8080/api';
+const url = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
 export async function fetchCampaigns(): Promise<Campaign[]> {
     const response = await axios.get<Campaign[]>(`${url}/campaigns`);
